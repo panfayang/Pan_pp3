@@ -18,6 +18,7 @@ int main ()
         table = pass1 ("testfile");
 
         printLabels (&table);
-
+	printBin(30,9);
+	printf("\n");
         return 0;
 }
