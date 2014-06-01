@@ -37,6 +37,7 @@
 static char * TOO_FEW = "Instruction contains fewer tokens than expected.";
 static char * TOO_MANY = "Instruction contains more tokens than expected.";
 
+void getToken (char ** tokBegin, char ** tokEnd);
 /**
  * getNTokens -- read N tokens from instructionBuffer, putting the
  *               resulting tokens in results

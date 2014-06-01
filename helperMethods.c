@@ -1,4 +1,7 @@
 #include<stdio.h>
+int translateOpcode(char* opcode);
+int translateFuncCode(char* funcCode);
+int translateRegister(char* number);
 
 void printBin(int value, int length){
 
@@ -17,7 +20,7 @@ void printBin(int value, int length){
 
 static char* WRONG_OPCODE = "I can't process the instruction at line number ";
 static char* WRONG_REG = "I can't process the register at line number ";
-void getOpType(char* opcode, char* opType, int* code, int line){
+void getOpType(char* opcode, char* opType, int code, int line){
 	int func = translateFuncCode(opcode);
 	if(func != -1){
 		opType = "R";

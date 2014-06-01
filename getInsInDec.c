@@ -5,6 +5,8 @@
  * The set of instructions can be found at "http://max.cs.kzoo.edu/CS230/Projects/mipsTable.html".
  * The set of registers can be found at "http://max.cs.kzoo.edu/CS230/Projects/mipsRegTable.html".
  */
+#include <stdio.h>
+#include <string.h>
 
 int translateOpcode(char* opcode){
 		if (strcmp(opcode, "addi") == 0) return 8 ;
