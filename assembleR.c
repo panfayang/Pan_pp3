@@ -23,7 +23,7 @@ void assembleR (int opcode, char * restOfStmt, int line){
                 printBin(0, 15);
                 printBin(8, 6);
             }else{
-                //printf("This is line %d, the register number is invalid.", line);
+                printf("This is line %d, the register number is invalid.", line);
             }
         }else{
             printf("This is line %d, %s", line, results[0]);
@@ -39,7 +39,7 @@ void assembleR (int opcode, char * restOfStmt, int line){
                     if (opcode == 0 || opcode == 2){
                         t = atoi(results[2]);
                         if (t == 0 && strcmp(results[2],"0") != 0){
-                            //printf("This is line %d, the shift amount is in the wrong format", line);
+                            printf("This is line %d, the shift amount is in the wrong format", line);
                         }else{
                             printBin(0, 6);
                             printBin(0, 5);

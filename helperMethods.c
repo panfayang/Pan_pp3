@@ -6,14 +6,19 @@ int translateRegister(char* number);
 void printBin(int value, int length){
 
     int max = 1 <<(length -1);
-    while (max>0){
-        if (value >= max){
-            printf("%d",1);
-            value = value - max;
-        }else{
-            printf("%d",0);
+    if (value >= 0){
+        while (max>0){
+            if (value >= max){
+                printf("%d",1);
+                value = value - max;
+            }else{
+                printf("%d",0);
+            }
+            max = max / 2;
         }
-        max = max / 2;
+    }else{
+        int negative = max*2 + value;
+        printBin(negative, length);
     }
 
 }
@@ -29,9 +34,9 @@ void getOpType(char* opcode, char* opType, int* code, int line){
             *opType = 'I';
             //printf("OMG!!!!!%s, %d, %d\n", opType, op, line);
         }
-//        printf("This is not the end of the if statement!%d\n", op);
+        //        printf("This is not the end of the if statement!%d\n", op);
         *code = op;
-  //      printf("This is the end of the if statement in helperMethods %d, %d\n", *code, op);
+        //      printf("This is the end of the if statement in helperMethods %d, %d\n", *code, op);
     }else{
         int func = translateFuncCode(opcode);
         if (func != -1){
@@ -44,7 +49,7 @@ void getOpType(char* opcode, char* opType, int* code, int line){
         }
 
     }
-   // printf("This is the end of this method: getOpType%s\n",opType);
+    // printf("This is the end of this method: getOpType%s\n",opType);
 }
 
 int getRegNbr(char* regName, int line){

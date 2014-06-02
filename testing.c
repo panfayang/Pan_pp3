@@ -12,15 +12,14 @@ LabelTable pass1 (char * filename);
 void printBin(int value, int length);
 void pass2 (char * filename, LabelTable table);
 
-int main ()
+int main (int arc, char* argv[])
 {
         LabelTable table;
         int i;
-        table = pass1 ("testfile");
-        printLabels (&table);
+        table = pass1 (argv[1]);
+//        printLabels (&table);
 	printf("\n");
-
-        pass2("testfile", table);
+        pass2(argv[1], table);
 
         return 0;
 }

@@ -19,6 +19,8 @@
 
 void assembleR (int opcode, char * restOfStmt, int line);
 void getOpType(char* opcode, char* opType, int* code, int line);
+void assembleI (int opcode, char * restOfStmt, int line, LabelTable table);
+void assembleJ (int opcode, char * restOfStmt, int line, LabelTable table);
 
 void pass2 (char * filename, LabelTable table)
   /* returns a copy of the label table that was constructed */
@@ -84,6 +86,10 @@ void pass2 (char * filename, LabelTable table)
             if (strcmp(opType,"R")==0){
                 //printf("This is before assembleR: %s, with code %d \n", restOfStatement, *code);
                 assembleR(*code, restOfStatement, line);
+            }else if (strcmp(opType, "I") == 0){
+                assembleI(*code, restOfStatement, line, table);
+            }else if (strcmp(opType, "J") == 0){
+                assembleJ(*code, restOfStatement, line, table);
             }
             printf("\n");
         }

@@ -32,7 +32,7 @@ void tableInit (LabelTable * table)
    */
 {
         /* make sure that table exists */
-		printf("Initializing a table...\n");
+		//printf("Initializing a table...\n");
         if ( table == NULL )
             return;
 
@@ -91,7 +91,7 @@ int addLabel (LabelTable * table, char * label, int PC)
    *      or table doesn't exist.
    */
 {
-        printf("Adding a label with label %s and address %d.\n",label, PC);
+        //printf("Adding a label with label %s and address %d.\n",label, PC);
 
         /* make sure that table exists */
         if ( table == NULL )
@@ -126,7 +126,7 @@ int addLabel (LabelTable * table, char * label, int PC)
 
 		int index = table->nbrLabels;
 
-		printf("Adding...\n");
+		//printf("Adding...\n");
 		table->entries[index].label = labelDuplicate;
 		table->entries[index].address = PC;
 		(table->nbrLabels)++;
@@ -165,7 +165,7 @@ void printLabels (LabelTable * table)
         int i;
 
         if ( table == NULL )
-            (void) printf ("Label Table is a NULL pointer.\n");
+            (void) //printf ("Label Table is a NULL pointer.\n");
         else
         {
             (void) printf ("There are %d labels in the table:\n",
