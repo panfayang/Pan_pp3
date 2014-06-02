@@ -18,7 +18,7 @@
 #include "getToken.h"
 
 void assembleR (int opcode, char * restOfStmt, int line);
-void getOpType(char* opcode, char* opType, int code, int line);
+void getOpType(char* opcode, char* opType, int* code, int line);
 
 void pass2 (char * filename, LabelTable table)
   /* returns a copy of the label table that was constructed */
@@ -29,8 +29,8 @@ void pass2 (char * filename, LabelTable table)
         int    line = 0;
         char   inst[BUFSIZ];           /* will hold instruction; BUFSIZ
                                           is max size of I/O buffer */
-        char * opType;
-        int * code;
+        char * opType = (char *)malloc(sizeof(char));
+        int *code = (int *)malloc(sizeof(int));
         char * opcodeString;
         char * restOfStatement;
         const char * ERROR1 = "Error: Cannot open file %s.\n";
@@ -54,6 +54,7 @@ void pass2 (char * filename, LabelTable table)
             if ( *inst == '#' ) continue;
             (void) strtok (inst, "#");
 
+            //printf("%s\n",inst);
             /* Skip any leading whitespace. */
             tokBegin = inst;
             getToken (&tokBegin, &tokEnd);
@@ -62,24 +63,30 @@ void pass2 (char * filename, LabelTable table)
                  * or whitespace after the end of the token.
                  */
 
+           // printf("I am here! %s\n",tokBegin);
             if ( *(tokEnd) == ':' ) {
                 tokBegin = tokEnd + 1;
                 getToken(&tokBegin, &tokEnd);
-                if ( *tokBegin == '\0' || *tokEnd){
+                if ( *tokBegin == '\0' || *tokEnd == '\0'){
                     continue;
                 }
             }
             opcodeString = tokBegin;
+            //printf("Here is the opcodeString: %s\n", tokBegin);
             *tokEnd = '\0';
             restOfStatement = tokEnd+1;
+            //printf("At least it's alright here! %s\n", restOfStatement);
             
             getOpType(opcodeString, opType, code, line);
 
+           // printf("Att least it's alright here! And here is the opType: %d\n",*code );
+           // printf("IAMWRONG, %s\n", opType);
             if (strcmp(opType,"R")==0){
-                assembleR(opcodeString, restOfStatement, line);
+                //printf("This is before assembleR: %s, with code %d \n", restOfStatement, *code);
+                assembleR(*code, restOfStatement, line);
             }
+            printf("\n");
         }
-
         /* EOF */
         (void) fclose (fp);
 }

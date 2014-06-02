@@ -10,7 +10,7 @@
 
 LabelTable pass1 (char * filename);
 void printBin(int value, int length);
-
+void pass2 (char * filename, LabelTable table);
 
 int main ()
 {
@@ -18,10 +18,9 @@ int main ()
         int i;
         table = pass1 ("testfile");
         printLabels (&table);
-	printBin(30,9);
 	printf("\n");
 
-        pass2("testfile");
+        pass2("testfile", table);
 
         return 0;
 }

@@ -4,7 +4,7 @@
 
 
 int getRegNbr(char* regName, int line);
-void getOpType(char* opcode, char* opType, int code, int line);
+void getOpType(char* opcode, char* opType, int* code, int line);
 void printBin(int value, int length);
 int getNTokens (char * instructionBuffer, int N, char * results[]);
 
@@ -68,7 +68,7 @@ void assembleR (int opcode, char * restOfStmt, int line){
                 //printf("This is line %d, there is something wrong with D register.", line);
             }
         }else{
-            printf(results[0]);
+            printf("%s", results[0]);
         }
     }
 }
