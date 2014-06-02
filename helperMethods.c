@@ -45,7 +45,7 @@ void getOpType(char* opcode, char* opType, int* code, int line){
         }else{
             *opType = 'X';
             *code = -1;
-            printf("%s%d, and the opcode was %s.\n", WRONG_OPCODE, line, opcode);
+            printf("%s%d, and the opcode was %s.", WRONG_OPCODE, line, opcode);
         }
 
     }
@@ -57,7 +57,7 @@ int getRegNbr(char* regName, int line){
     if (reg!=-1){
         return reg;
     }else{
-        printf("%s%d, and the register name was %s.\n", WRONG_REG, line, regName);
+        printf("%s%d, and the register name was %s.", WRONG_REG, line, regName);
         return -1;
     }
 

@@ -1,3 +1,10 @@
+/**
+ * Fayang Pan June 2rd 2014
+ *
+ * This class deals with R format. The address of the input will be passed to the function by reference,
+ * and all the changes will be made on the parameters.
+ *
+ */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -13,6 +20,7 @@ void assembleR (int opcode, char * restOfStmt, int line){
     char * tokBegin = restOfStmt;
     char * tokEnd;
 
+    // in case of jr
     if(opcode == 8){
         char * results[1];
         if (getNTokens(restOfStmt, 1, results) == 1){
@@ -23,7 +31,7 @@ void assembleR (int opcode, char * restOfStmt, int line){
                 printBin(0, 15);
                 printBin(8, 6);
             }else{
-                printf("This is line %d, the register number is invalid.", line);
+                //printf("This is line %d, the register number is invalid.", line);
             }
         }else{
             printf("This is line %d, %s", line, results[0]);
@@ -36,10 +44,11 @@ void assembleR (int opcode, char * restOfStmt, int line){
                 int s = getRegNbr(results[1],line);
                 if (s != -1){
                     int t;
+                    // in case of sll and srl
                     if (opcode == 0 || opcode == 2){
                         t = atoi(results[2]);
                         if (t == 0 && strcmp(results[2],"0") != 0){
-                            printf("This is line %d, the shift amount is in the wrong format", line);
+                            // printf("This is line %d, the shift amount is in the wrong format", line);
                         }else{
                             printBin(0, 6);
                             printBin(0, 5);
@@ -68,7 +77,7 @@ void assembleR (int opcode, char * restOfStmt, int line){
                 //printf("This is line %d, there is something wrong with D register.", line);
             }
         }else{
-            printf("%s", results[0]);
+            printf("This is line %d, %s", line, results[0]);
         }
     }
 }

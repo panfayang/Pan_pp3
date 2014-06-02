@@ -165,7 +165,7 @@ void printLabels (LabelTable * table)
         int i;
 
         if ( table == NULL )
-            (void) //printf ("Label Table is a NULL pointer.\n");
+            (void) printf ("Label Table is a NULL pointer.\n");
         else
         {
             (void) printf ("There are %d labels in the table:\n",

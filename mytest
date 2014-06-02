@@ -1,0 +1,28 @@
+main:	lw $a0, 0($t0)			# was lw $a0, item, but that's wrong
+begin:	addi $t0, $zero, 0		# beginning
+	addi $t1, $zero, 1
+loop:	slt $t2, $a0, $t1		# top of loop
+	bne $t2, $zero, finish
+	add $t0, $t0, $t1
+	addi $t1, $t1, 2
+	j loop				# bottom of loop
+finish:	add $v0, $t0, $zero
+        addu $t0, $t1, $t2
+        sub $t3, $t4, $t5
+        subu $t6, $t7, $s0
+        addiu $s1, $s2, 100
+        and $s3, $s4, $s5
+        or $s6, $s7, $t8
+        nor $t9, $k0, $k1
+        andi $gp, $fp, 20
+        ori $sp, $ra, 21
+        sll $at, $v0, 10
+        srl $v1, $a0, 9
+        sw $a1, 100($a2)
+        lui $a3, 100
+        beq $s1, $s2, loop
+        sltu $t0, $t0, $t1
+        slti $s1, $s2, 100
+        sltiu $s1, $s2, 100
+        jr $ra
+        jal main
